@@ -1,4 +1,6 @@
-import { Ship } from "../factories/ship";
+import {
+  Ship
+} from "../factories/ship";
 
 
 describe('Ship', () => {
@@ -27,11 +29,19 @@ describe('Ship', () => {
     // Verify that the hit is successful (returns true)
     expect(shipHit).toBe(true);
 
-    ship.hit(2);
-
     // Verify that the hit position is true
     expect(ship.hits[2]).toBe(true);
+  });
 
+  test('hitting an invalid position', () => {
+
+    const shipHit = ship.hit(5);
+
+    // Verify that the hit is unsuccessful (returns false)
+    expect(shipHit).toBe(false);
+
+    // Verify that the hit position is undefined
+    expect(ship.hits[5]).toBe(undefined);
   });
 
 })
