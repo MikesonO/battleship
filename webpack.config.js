@@ -5,7 +5,8 @@ module.exports = {
   mode: 'production',
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Battleship'
+      title: 'Battleship',
+      favicon: './src/images/ship.ico'
     })
   ],
   entry: './src/index.js',
