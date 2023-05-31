@@ -50,12 +50,10 @@ describe('Ship', () => {
     expect(ship.isSunk()).toBe(false);
 
     for (let i = 0; i < ship.length; i++) {
-      console.log(i);
       ship.hit(i);
     }
 
     // Verify that all elements in the hits array are set to true
-    console.log(ship.hits);
     expect(ship.hits.every((hit) => hit === true)).toBe(true);
 
     // Verify that the ship is now sunk
