@@ -20,4 +20,18 @@ describe('Ship', () => {
     expect(ship.hits.every((hit) => hit === false)).toBe(true);
   });
 
+  test('hitting a valid position', () => {
+
+    const shipHit = ship.hit(2);
+
+    // Verify that the hit is successful (returns true)
+    expect(shipHit).toBe(true);
+
+    ship.hit(2);
+
+    // Verify that the hit position is true
+    expect(ship.hits[2]).toBe(true);
+
+  });
+
 })
