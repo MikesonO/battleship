@@ -2,6 +2,7 @@ export class Gameboard {
   constructor() {
     this.grid = this.createGrid();
     this.missedAttacks = [];
+    this.playerShips = [];
   }
 
   // Creates a 10 row 10 grid with null values
@@ -66,5 +67,13 @@ export class Gameboard {
     }
   }
 
+  checkPlayerShips(){
+    for (let ship of this.ships) {
+      if (!ship.isSunk()) {
+        return false; // If any ship is not sunk
+      }
+    }
+    return true; // All ships are sunk
+  }
 
 };
