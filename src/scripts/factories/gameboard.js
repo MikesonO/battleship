@@ -53,6 +53,9 @@ export class Gameboard {
     shipSections.forEach(({row, col}) => {
       this.grid[col][row] = ship;
     });
+
+    // Add placed ship to playerShips
+    this.playerShips.push(ship);
   }
 
 
@@ -68,7 +71,7 @@ export class Gameboard {
   }
 
   checkPlayerShips(){
-    for (let ship of this.ships) {
+    for (let ship of this.playerShips) {
       if (!ship.isSunk()) {
         return false; // If any ship is not sunk
       }
