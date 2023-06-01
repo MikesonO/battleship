@@ -39,7 +39,7 @@ describe('Gameboard', () => {
       error = e.message;
     }
 
-    
+
     expect(error).toBe('Ship placement obstructed');
 
     // Verify that the second ship is not placed on the grid
@@ -48,5 +48,16 @@ describe('Gameboard', () => {
     expect(gameboard.grid[3][5]).toBe(ship);
     expect(gameboard.grid[3][6]).toBe(null);
   });
+
+  
+test('receiveAttack recording missed shots', () => {
+  gameboard = new Gameboard();
+
+  // Attack at coordinates (3, 4) with no ship
+  gameboard.receiveAttack(3, 4);
+
+  // Check if the missed attack is recorded
+  expect(gameboard.missedAttacks).toContainEqual({ row: 3, col: 4 });
+});
 
 });
