@@ -60,4 +60,44 @@ test('receiveAttack recording missed shots', () => {
   expect(gameboard.missedAttacks).toContainEqual({ row: 3, col: 4 });
 });
 
+test('checkPlayerShips returns true when all ships are sunk', () => {
+  const gameboard = new Gameboard();
+
+  // Create ships and place them on the gameboard
+  const ship1 = new Ship(3);
+  const ship2 = new Ship(2);
+  gameboard.placeShip(ship1, 2, 3, true);
+  gameboard.placeShip(ship2, 5, 6, false);
+
+  // Hit all sections of both ships
+  ship1.hit(0);
+  ship1.hit(1);
+  ship1.hit(2);
+  ship2.hit(0);
+  ship2.hit(1);
+
+  // Check if all ships are sunk
+  expect(gameboard.checkPlayerShips()).toBe(true);
+});
+
+test('checkPlayerShips returns false when not all ships are sunk', () => {
+  const gameboard = new Gameboard();
+
+  // Create ships and place them on the gameboard
+  const ship1 = new Ship(3);
+  const ship2 = new Ship(2);
+  gameboard.placeShip(ship1, 2, 3, true);
+  gameboard.placeShip(ship2, 5, 6, false);
+
+  // Hit sections of the ships
+  ship1.hit(0);
+  ship1.hit(2); 
+  ship2.hit(1);
+
+  // Check if all ships are not sunk
+  expect(gameboard.checkPlayerShips()).toBe(false);
+});
+
+
+
 });
