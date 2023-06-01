@@ -18,11 +18,11 @@ export class Ship {
   }
 
   rotate() {
-    if (!this.isVertical) {
-      this.isVertical = true;
+    if (!this.isVerticle) {
+      this.isVerticle = true;
     } else {
-      this.isVertical = false;
+      this.isVerticle = false;
     }
   }
-  
+
 }
