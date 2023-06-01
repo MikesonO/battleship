@@ -1,6 +1,7 @@
 export class Gameboard {
   constructor() {
     this.grid = this.createGrid();
+    this.missedAttacks = [];
   }
 
   // Creates a 10 row 10 grid with null values
@@ -58,7 +59,7 @@ export class Gameboard {
     const target = this.grid[row][col];
     if (target === null){
       // Record the coordinates of the missed shot
-      this.grid[row][col] = 'miss';
+      this.missedAttacks.push({ row, col });
     } else if (target instanceof Ship) {
       // Call the 'hit' function on the ship
       target.hit(row, col);
