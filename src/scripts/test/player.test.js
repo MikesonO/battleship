@@ -20,4 +20,21 @@ describe('Player', () => {
     expect(player.getName()).toBe('New Player');
   });
 
+  test('starting and ending the turn', () => {
+    // Verify initial turn state
+    expect(player.turn).toBe(true);
+
+    // End the turn
+    player.endTurn();
+
+    // Verify turn state after ending the turn
+    expect(player.turn).toBe(false);
+
+    // Start the turn
+    player.startTurn();
+
+    // Verify turn state after starting the turn
+    expect(player.turn).toBe(true);
+  });
+
 });
