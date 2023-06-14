@@ -37,4 +37,14 @@ describe('Player', () => {
     expect(player.turn).toBe(true);
   });
 
+  test('making a random play', () => {
+    const gameboard = new Gameboard();
+
+    // Call the makeRandomPlay method
+    player.makeRandomPlay(gameboard);
+
+    // Verify that the player's previousAttacks array has one attack recorded
+    expect(player.previousAttacks.length).toBe(1);
+  });
+
 });
